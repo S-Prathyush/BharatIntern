@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #131313;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: black;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            margin-left: 8%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #131313;
+            color: white;
+        }
+        input[type="submit"] {
+            background: #131313;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display:block;
+            margin: 0 auto;
+        }
+        input[type="submit"]:hover {
+            background: white;
+            color: black;
+        }
+        h2{
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+        .option{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            color: white;
+        }
+        a{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <form id="signupForm" action="/signup" method="POST">
+        <h2>Sign Up</h2>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <input type="submit" value="Sign Up">
+        <p class="option">Already have an account? <a href="/signin">Sign In</a></p>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('signupForm').addEventListener('submit', function(e) {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    e.preventDefault();
+                    alert('Passwords do not match!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
